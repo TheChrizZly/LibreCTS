@@ -23,7 +23,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9d2ade6-f88d-473c-ae39-192515130fa9" name="Changes" comment="" />
+    <list default="true" id="e9d2ade6-f88d-473c-ae39-192515130fa9" name="Changes" comment="Init Commit - Load a 12 Bit CT image and change the Windowing">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,6 +39,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "TheChrizZly"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/TheChrizZly/LibreCTS",
+    "accountId": "a0629021-8c98-4799-a1dc-de0e0178b549"
+  }
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../LibreCTS/main.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../LibreCTS/src/CTImage.cpp" root0="SKIP_HIGHLIGHTING" />
@@ -74,14 +89,14 @@
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/home/christian/CLionProjects/OpenCTViz",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "settings.editor.selected.configurable": "vcs.Git",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -116,8 +131,17 @@
       <updated>1728403117931</updated>
       <workItem from="1728403119722" duration="577000" />
       <workItem from="1728403795535" duration="32936000" />
-      <workItem from="1729670397583" duration="17676000" />
+      <workItem from="1729670397583" duration="18587000" />
     </task>
+    <task id="LOCAL-00001" summary="Init Commit - Load a 12 Bit CT image and change the Windowing">
+      <option name="closed" value="true" />
+      <created>1729773598501</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1729773598501</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,6 +151,10 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Init Commit - Load a 12 Bit CT image and change the Windowing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Init Commit - Load a 12 Bit CT image and change the Windowing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
