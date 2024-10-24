@@ -14,6 +14,7 @@
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -41,9 +42,13 @@ public:
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout_3;
     QCheckBox *windowingCheckbox;
+    QHBoxLayout *horizontalLayout_5;
     QLabel *windowCenterLabel;
+    QLineEdit *windowingCenterValue;
     QSlider *windowCenterSlider;
+    QHBoxLayout *horizontalLayout_6;
     QLabel *windowWidthLabel;
+    QLineEdit *windowingWidthValue;
     QSlider *windowWidthSlider;
     QSpacerItem *windowingSliderSpacer;
     QMenuBar *menubar;
@@ -104,10 +109,23 @@ public:
 
         verticalLayout_3->addWidget(windowingCheckbox);
 
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName("horizontalLayout_5");
         windowCenterLabel = new QLabel(centralwidget);
         windowCenterLabel->setObjectName("windowCenterLabel");
 
-        verticalLayout_3->addWidget(windowCenterLabel);
+        horizontalLayout_5->addWidget(windowCenterLabel);
+
+        windowingCenterValue = new QLineEdit(centralwidget);
+        windowingCenterValue->setObjectName("windowingCenterValue");
+        windowingCenterValue->setMaxLength(4);
+
+        horizontalLayout_5->addWidget(windowingCenterValue);
+
+        horizontalLayout_5->setStretch(0, 1);
+        horizontalLayout_5->setStretch(1, 1);
+
+        verticalLayout_3->addLayout(horizontalLayout_5);
 
         windowCenterSlider = new QSlider(centralwidget);
         windowCenterSlider->setObjectName("windowCenterSlider");
@@ -124,10 +142,23 @@ public:
 
         verticalLayout_3->addWidget(windowCenterSlider);
 
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setObjectName("horizontalLayout_6");
         windowWidthLabel = new QLabel(centralwidget);
         windowWidthLabel->setObjectName("windowWidthLabel");
 
-        verticalLayout_3->addWidget(windowWidthLabel);
+        horizontalLayout_6->addWidget(windowWidthLabel);
+
+        windowingWidthValue = new QLineEdit(centralwidget);
+        windowingWidthValue->setObjectName("windowingWidthValue");
+        windowingWidthValue->setMaxLength(4);
+
+        horizontalLayout_6->addWidget(windowingWidthValue);
+
+        horizontalLayout_6->setStretch(0, 1);
+        horizontalLayout_6->setStretch(1, 1);
+
+        verticalLayout_3->addLayout(horizontalLayout_6);
 
         windowWidthSlider = new QSlider(centralwidget);
         windowWidthSlider->setObjectName("windowWidthSlider");
@@ -135,6 +166,7 @@ public:
         windowWidthSlider->setValue(800);
         windowWidthSlider->setSliderPosition(800);
         windowWidthSlider->setOrientation(Qt::Orientation::Horizontal);
+        windowWidthSlider->setTickPosition(QSlider::TickPosition::NoTicks);
 
         verticalLayout_3->addWidget(windowWidthSlider);
 
@@ -171,7 +203,9 @@ public:
         loadImageButton->setText(QCoreApplication::translate("MainWindow", "load Image", nullptr));
         windowingCheckbox->setText(QCoreApplication::translate("MainWindow", "Windowing", nullptr));
         windowCenterLabel->setText(QCoreApplication::translate("MainWindow", "Windowing Center", nullptr));
+        windowingCenterValue->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         windowWidthLabel->setText(QCoreApplication::translate("MainWindow", "Windowing Width", nullptr));
+        windowingWidthValue->setText(QCoreApplication::translate("MainWindow", "800", nullptr));
     } // retranslateUi
 
 };

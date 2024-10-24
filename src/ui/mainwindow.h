@@ -7,6 +7,7 @@
 
 #include <QMainWindow>
 #include <QFileDialog>
+#include <QIntValidator>
 #include "../CTImage.h"
 #include "../ErrorHandler.h"
 
@@ -29,6 +30,6 @@ private:
     CTImage currentImage;// Store the currently loaded image
 private slots:
     void loadImage();
-    void updateWindowing();
+    void updateWindowing() const;
 };
 #endif // MAINWINDOW_H
