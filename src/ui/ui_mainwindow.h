@@ -11,7 +11,6 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -50,7 +49,6 @@ public:
     QSpacerItem *layerSpaceDown;
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout_3;
-    QCheckBox *windowingCheckbox;
     QHBoxLayout *horizontalLayout_5;
     QLabel *windowCenterLabel;
     QLineEdit *windowingCenterValue;
@@ -170,11 +168,6 @@ public:
         verticalLayout_2->setObjectName("verticalLayout_2");
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName("verticalLayout_3");
-        windowingCheckbox = new QCheckBox(centralwidget);
-        windowingCheckbox->setObjectName("windowingCheckbox");
-
-        verticalLayout_3->addWidget(windowingCheckbox);
-
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName("horizontalLayout_5");
         windowCenterLabel = new QLabel(centralwidget);
@@ -269,7 +262,6 @@ public:
         loadImageButton->setText(QCoreApplication::translate("MainWindow", "load Image", nullptr));
         layerLabel->setText(QCoreApplication::translate("MainWindow", "Layer", nullptr));
         layerValue->setText(QCoreApplication::translate("MainWindow", "1", nullptr));
-        windowingCheckbox->setText(QCoreApplication::translate("MainWindow", "Windowing", nullptr));
         windowCenterLabel->setText(QCoreApplication::translate("MainWindow", "Windowing Center", nullptr));
         windowingCenterValue->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         windowWidthLabel->setText(QCoreApplication::translate("MainWindow", "Windowing Width", nullptr));

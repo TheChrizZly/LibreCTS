@@ -23,12 +23,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9d2ade6-f88d-473c-ae39-192515130fa9" name="Changes" comment="Added visualization of the Windowing Values">
+    <list default="true" id="e9d2ade6-f88d-473c-ae39-192515130fa9" name="Changes" comment="Added 3D Image support">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTImage.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTImage.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTImage.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTImage.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/mainwindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/mainwindow.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/mainwindow.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/mainwindow.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/mainwindow.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/ui_mainwindow.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ui_mainwindow.h" afterDir="false" />
     </list>
@@ -155,7 +152,7 @@
       <workItem from="1728403119722" duration="577000" />
       <workItem from="1728403795535" duration="32936000" />
       <workItem from="1729670397583" duration="19726000" />
-      <workItem from="1729775512571" duration="10489000" />
+      <workItem from="1729775512571" duration="11163000" />
     </task>
     <task id="LOCAL-00001" summary="Init Commit - Load a 12 Bit CT image and change the Windowing">
       <option name="closed" value="true" />
@@ -197,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729788990296</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added 3D Image support">
+      <option name="closed" value="true" />
+      <created>1729934609563</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1729934609563</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,7 +231,8 @@
     <MESSAGE value="Init Commit - Load a 12 Bit CT image and change the Windowing" />
     <MESSAGE value="Added Readme" />
     <MESSAGE value="Added visualization of the Windowing Values" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added visualization of the Windowing Values" />
+    <MESSAGE value="Added 3D Image support" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added 3D Image support" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

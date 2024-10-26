@@ -24,9 +24,12 @@ MainWindow::MainWindow(QWidget *parent)
         ui->windowWidthSlider->setValue(ui->windowingWidthValue->text().toInt());
     });
     connect(ui->layerSlider, &QSlider::valueChanged, [this](const int value) {
+        QElapsedTimer timer;
+        timer.start();
         currentImage.setLayer(value-1);
         ui->drawingArea->setImage(QPixmap::fromImage(currentImage.toQImage()));
         ui->layerValue->setText(QString::number(value));
+        QDebug(QtMsgType::QtInfoMsg) << "Time elapsed: " << timer.elapsed() << "ms";
     });
     connect(ui->layerValue, &QLineEdit::editingFinished, [this]() {
         currentImage.setLayer(ui->layerValue->text().toInt()-1);
@@ -56,16 +59,14 @@ void MainWindow::loadImage() {
 void MainWindow::updateWindowing() {
     QElapsedTimer timer;
     timer.start();
-    if(ui->windowingCheckbox->isChecked()) {
-        // 1. Get current windowing values
-        const int windowCenter = ui->windowCenterSlider->value();
-        const int windowWidth = ui->windowWidthSlider->value();
-        ui->windowingCenterValue->setText(QString::number(windowCenter));
-        ui->windowingWidthValue->setText(QString::number(windowWidth));
-        currentImage.setWindowingParameters(windowCenter, windowWidth);
-        // 2. Update the image in the viewer
-        ui->drawingArea->setImage(QPixmap::fromImage(currentImage.toQImage()));
-    }
+    // 1. Get current windowing values
+    const int windowCenter = ui->windowCenterSlider->value();
+    const int windowWidth = ui->windowWidthSlider->value();
+    ui->windowingCenterValue->setText(QString::number(windowCenter));
+    ui->windowingWidthValue->setText(QString::number(windowWidth));
+    currentImage.setWindowingParameters(windowCenter, windowWidth);
+    // 2. Update the image in the viewer
+    ui->drawingArea->setImage(QPixmap::fromImage(currentImage.toQImage()));
     qDebug() << "Time elapsed: " << timer.elapsed() << "ms";
 }
 

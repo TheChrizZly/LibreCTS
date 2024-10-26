@@ -201,13 +201,6 @@
       <item>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
-         <widget class="QCheckBox" name="windowingCheckbox">
-          <property name="text">
-           <string>Windowing</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="1,1">
           <item>
            <widget class="QLabel" name="windowCenterLabel">
