@@ -12,21 +12,38 @@
 
 class CTImage {
 public:
-    CTImage(int width, int height, int depth);
+    struct CTImageDims {
+        size_t width_;
+        size_t height_;
+        size_t depth_;
+    };
+    CTImage() : height_(0), width_(0), depth_(0), size_(0), currentWindowingCenter_(0), currentWindowingWidth_(800), currentLayer_(1), data_(nullptr) {}
     ~CTImage();
-    int readImage(const QString &filepath) const;
-    [[nodiscard]] QImage toQImage(int center,int  width) const;
+
+    void setWindowingParameters(const int windowCenter, const int windowWidth) {currentWindowingCenter_ = windowCenter; currentWindowingWidth_ = windowWidth;}
+    void setLayer(const int layer){currentLayer_ = layer;}
+    [[nodiscard]] CTImageDims getImageDims() const {return {height_, width_, depth_};}
+    [[nodiscard]] int getLayer() const {return currentLayer_;}
+
+    int readImage(const QString &filepath, size_t height=0, size_t width=0, size_t depth=0);
+    [[nodiscard]] QImage toQImage() const;
+
+    // Depreciated Functions: To be removed
     [[nodiscard]] QImage get2DImage(int center, int width) const;
     [[nodiscard]] QImage get2DImage_8bit() const;
+    [[nodiscard]] QImage toQImage_unoptimized(int center, int width) const;
 
     static int applyWindow(int hu, int windowCenter, int windowWidth);
 
     static int applyWindow_minmax(int hu, int min, int max);
 private:
-    int width_;
-    int height_;
-    int depth_;
-    int size_;
+    size_t height_;
+    size_t width_;
+    size_t depth_;
+    size_t size_;
+    int currentWindowingCenter_;
+    int currentWindowingWidth_;
+    int currentLayer_;
 
     short *data_;
 

@@ -39,6 +39,15 @@ public:
     QSpacerItem *leftLoadImageButtonSpacer;
     QPushButton *loadImageButton;
     QSpacerItem *rightLoadImageButtonSpacer;
+    QVBoxLayout *verticalLayout_4;
+    QSpacerItem *layerSpacerUp;
+    QLabel *layerLabel;
+    QLineEdit *layerValue;
+    QHBoxLayout *horizontalLayout_7;
+    QSpacerItem *horizontalSpacer;
+    QSlider *layerSlider;
+    QSpacerItem *horizontalSpacer_2;
+    QSpacerItem *layerSpaceDown;
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout_3;
     QCheckBox *windowingCheckbox;
@@ -100,6 +109,63 @@ public:
 
         horizontalLayout->addLayout(verticalLayout);
 
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setObjectName("verticalLayout_4");
+        layerSpacerUp = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        verticalLayout_4->addItem(layerSpacerUp);
+
+        layerLabel = new QLabel(centralwidget);
+        layerLabel->setObjectName("layerLabel");
+
+        verticalLayout_4->addWidget(layerLabel);
+
+        layerValue = new QLineEdit(centralwidget);
+        layerValue->setObjectName("layerValue");
+        QSizePolicy sizePolicy(QSizePolicy::Policy::MinimumExpanding, QSizePolicy::Policy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(layerValue->sizePolicy().hasHeightForWidth());
+        layerValue->setSizePolicy(sizePolicy);
+        layerValue->setMaximumSize(QSize(40, 16777215));
+        layerValue->setCursor(QCursor(Qt::CursorShape::IBeamCursor));
+        layerValue->setContextMenuPolicy(Qt::ContextMenuPolicy::NoContextMenu);
+        layerValue->setMaxLength(3);
+        layerValue->setFrame(false);
+        layerValue->setEchoMode(QLineEdit::EchoMode::Normal);
+        layerValue->setAlignment(Qt::AlignmentFlag::AlignCenter);
+
+        verticalLayout_4->addWidget(layerValue);
+
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setObjectName("horizontalLayout_7");
+        horizontalSpacer = new QSpacerItem(5, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_7->addItem(horizontalSpacer);
+
+        layerSlider = new QSlider(centralwidget);
+        layerSlider->setObjectName("layerSlider");
+        layerSlider->setMinimum(1);
+        layerSlider->setMaximum(1);
+        layerSlider->setOrientation(Qt::Orientation::Vertical);
+        layerSlider->setInvertedAppearance(true);
+
+        horizontalLayout_7->addWidget(layerSlider);
+
+        horizontalSpacer_2 = new QSpacerItem(5, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_7->addItem(horizontalSpacer_2);
+
+
+        verticalLayout_4->addLayout(horizontalLayout_7);
+
+        layerSpaceDown = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        verticalLayout_4->addItem(layerSpaceDown);
+
+
+        horizontalLayout->addLayout(verticalLayout_4);
+
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName("verticalLayout_2");
         verticalLayout_3 = new QVBoxLayout();
@@ -129,11 +195,11 @@ public:
 
         windowCenterSlider = new QSlider(centralwidget);
         windowCenterSlider->setObjectName("windowCenterSlider");
-        QSizePolicy sizePolicy(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(windowCenterSlider->sizePolicy().hasHeightForWidth());
-        windowCenterSlider->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(windowCenterSlider->sizePolicy().hasHeightForWidth());
+        windowCenterSlider->setSizePolicy(sizePolicy1);
         windowCenterSlider->setMinimum(-1024);
         windowCenterSlider->setMaximum(3095);
         windowCenterSlider->setValue(0);
@@ -181,7 +247,7 @@ public:
         horizontalLayout->addLayout(verticalLayout_2);
 
         horizontalLayout->setStretch(0, 2);
-        horizontalLayout->setStretch(1, 1);
+        horizontalLayout->setStretch(2, 1);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -201,6 +267,8 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         drawingArea->setText(QString());
         loadImageButton->setText(QCoreApplication::translate("MainWindow", "load Image", nullptr));
+        layerLabel->setText(QCoreApplication::translate("MainWindow", "Layer", nullptr));
+        layerValue->setText(QCoreApplication::translate("MainWindow", "1", nullptr));
         windowingCheckbox->setText(QCoreApplication::translate("MainWindow", "Windowing", nullptr));
         windowCenterLabel->setText(QCoreApplication::translate("MainWindow", "Windowing Center", nullptr));
         windowingCenterValue->setText(QCoreApplication::translate("MainWindow", "0", nullptr));

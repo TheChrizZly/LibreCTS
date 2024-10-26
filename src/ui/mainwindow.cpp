@@ -9,10 +9,11 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-      , ui(new Ui::MainWindow), currentImage(512, 512, 1) {
+      , ui(new Ui::MainWindow), currentImage() {
     ui->setupUi(this);
     ui->windowingCenterValue->setValidator(new QIntValidator(-1024, 3095, this));
     ui->windowingWidthValue->setValidator(new QIntValidator(1, 2059, this));
+    ui->layerValue->setValidator(new QIntValidator(1, 1, this));
     connect(ui->loadImageButton, &QPushButton::clicked, this, &MainWindow::loadImage);
     connect(ui->windowCenterSlider, &QSlider::valueChanged, this, &MainWindow::updateWindowing);
     connect(ui->windowWidthSlider, &QSlider::valueChanged, this, &MainWindow::updateWindowing);
@@ -22,6 +23,16 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->windowingWidthValue, &QLineEdit::editingFinished, [this]() {
         ui->windowWidthSlider->setValue(ui->windowingWidthValue->text().toInt());
     });
+    connect(ui->layerSlider, &QSlider::valueChanged, [this](const int value) {
+        currentImage.setLayer(value-1);
+        ui->drawingArea->setImage(QPixmap::fromImage(currentImage.toQImage()));
+        ui->layerValue->setText(QString::number(value));
+    });
+    connect(ui->layerValue, &QLineEdit::editingFinished, [this]() {
+        currentImage.setLayer(ui->layerValue->text().toInt()-1);
+        ui->drawingArea->setImage(QPixmap::fromImage(currentImage.toQImage()));
+        ui->layerSlider->setValue(ui->layerValue->text().toInt());
+    });
 }
 
 MainWindow::~MainWindow() {
@@ -29,25 +40,32 @@ MainWindow::~MainWindow() {
 }
 void MainWindow::loadImage() {
     const QString fileName = QFileDialog::getOpenFileName(this, "Open Image", QCoreApplication::applicationDirPath(), "Image Files (*.raw)");
-    const CTImage ctImage(512, 512, 1);
-    if(int res = ctImage.readImage(fileName)) {
+    CTImage ctImage;
+    if(int res = ctImage.readImage(fileName, 512, 512, 130); res != 0) {
         ErrorHandler errorHandler;
         errorHandler.handleError(static_cast<ErrorCode>(res));
         return;
     }
     currentImage = ctImage;
-    ui->drawingArea->setImage(QPixmap::fromImage(ctImage.get2DImage(0, 800)));
+    ui->layerSlider->setMaximum(currentImage.getImageDims().depth_);
+    ui->layerValue->setValidator(new QIntValidator(1, currentImage.getImageDims().depth_, this));
+
+    ui->drawingArea->setImage(QPixmap::fromImage(ctImage.toQImage()));
 }
 
-void MainWindow::updateWindowing() const {
+void MainWindow::updateWindowing() {
+    QElapsedTimer timer;
+    timer.start();
     if(ui->windowingCheckbox->isChecked()) {
         // 1. Get current windowing values
         const int windowCenter = ui->windowCenterSlider->value();
         const int windowWidth = ui->windowWidthSlider->value();
         ui->windowingCenterValue->setText(QString::number(windowCenter));
         ui->windowingWidthValue->setText(QString::number(windowWidth));
+        currentImage.setWindowingParameters(windowCenter, windowWidth);
         // 2. Update the image in the viewer
-        ui->drawingArea->setImage(QPixmap::fromImage(currentImage.get2DImage(windowCenter, windowWidth)));
+        ui->drawingArea->setImage(QPixmap::fromImage(currentImage.toQImage()));
     }
+    qDebug() << "Time elapsed: " << timer.elapsed() << "ms";
 }
 
