@@ -3,7 +3,3 @@
 //
 
 #include "ctimageviewer.h"
-
-CTImageViewer::CTImageViewer(QWidget *parent) : QLabel(parent) {
-
-}

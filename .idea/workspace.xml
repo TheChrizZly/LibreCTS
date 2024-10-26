@@ -23,11 +23,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9d2ade6-f88d-473c-ae39-192515130fa9" name="Changes" comment="Added 3D Image support">
+    <list default="true" id="e9d2ade6-f88d-473c-ae39-192515130fa9" name="Changes" comment="Windowing Checkbox removed, as it was misleading">
+      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/ctimageviewer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ctimageviewer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/ctimageviewer.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ctimageviewer.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/mainwindow.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/mainwindow.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/mainwindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/mainwindow.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/ui_mainwindow.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/ui_mainwindow.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/mainwindow.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/mainwindow.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,16 +64,6 @@
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../LibreCTS/main.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../LibreCTS/src/CTImage.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../LibreCTS/src/CTImage.h" root0="SKIP_HIGHLIGHTING" />
@@ -81,6 +73,8 @@
     <setting file="file://$PROJECT_DIR$/../LibreCTS/src/ErrorHandler.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../LibreCTS/src/ui/mainwindow.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../LibreCTS/src/ui/mainwindow.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Qt/6.8.0/gcc_64/include/QtCore/qobjectdefs_impl.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Qt/6.8.0/gcc_64/include/QtCore/qswap.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Qt/6.8.0/gcc_64/include/QtGui/qpixmap.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectApplicationVersion">
@@ -135,11 +129,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -152,7 +141,8 @@
       <workItem from="1728403119722" duration="577000" />
       <workItem from="1728403795535" duration="32936000" />
       <workItem from="1729670397583" duration="19726000" />
-      <workItem from="1729775512571" duration="11163000" />
+      <workItem from="1729775512571" duration="11832000" />
+      <workItem from="1729936440010" duration="2448000" />
     </task>
     <task id="LOCAL-00001" summary="Init Commit - Load a 12 Bit CT image and change the Windowing">
       <option name="closed" value="true" />
@@ -202,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729934609563</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Windowing Checkbox removed, as it was misleading">
+      <option name="closed" value="true" />
+      <created>1729935111172</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1729935111172</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,7 +230,8 @@
     <MESSAGE value="Added Readme" />
     <MESSAGE value="Added visualization of the Windowing Values" />
     <MESSAGE value="Added 3D Image support" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added 3D Image support" />
+    <MESSAGE value="Windowing Checkbox removed, as it was misleading" />
+    <option name="LAST_COMMIT_MESSAGE" value="Windowing Checkbox removed, as it was misleading" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -241,11 +240,6 @@
           <url>file://$PROJECT_DIR$/../LibreCTS/src/CTImage.cpp</url>
           <line>19</line>
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/CTImage.cpp</url>
-          <line>12</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

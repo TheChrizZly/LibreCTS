@@ -30,6 +30,11 @@ public:
 private:
     Ui::MainWindow *ui;
     CTImage currentImage;// Store the currently loaded image
+    int counterWindowing = 0;
+    int counterLayering = 0;
+    int timerWindowing = 0;
+    int timerLayering = 0;
+
 private slots:
     void loadImage();
     void updateWindowing();

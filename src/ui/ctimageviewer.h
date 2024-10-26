@@ -16,10 +16,15 @@ class CTImageViewer final : public QLabel {
     Q_OBJECT
 
 public:
-    explicit CTImageViewer(QWidget *parent = nullptr);
+    explicit CTImageViewer(QWidget *parent = nullptr): originalPixmap(new QPixmap) {}
     void setImage(const QPixmap &pixmap) {
-        originalPixmap = new QPixmap(pixmap); // Store a copy of the original
+        //Slightly faster than swapping the content
+        originalPixmap = std::make_unique<QPixmap>(pixmap);
         setPixmap(pixmap);
+
+       // QPixmap newPixmap(pixmap); // Create a temporary pixmap
+       // originalPixmap->swap(newPixmap); // Swap contents efficiently
+       // setPixmap(pixmap);
     }
 protected:
     void resizeEvent(QResizeEvent *event) override {
@@ -35,8 +40,7 @@ protected:
     }
 
 private:
-    QPixmap *originalPixmap; // Store the original pixmap
-};
+    std::unique_ptr<QPixmap> originalPixmap;};
 
 
 #endif //CTIMAGEVIEWER_H

@@ -29,7 +29,9 @@ MainWindow::MainWindow(QWidget *parent)
         currentImage.setLayer(value-1);
         ui->drawingArea->setImage(QPixmap::fromImage(currentImage.toQImage()));
         ui->layerValue->setText(QString::number(value));
-        QDebug(QtMsgType::QtInfoMsg) << "Time elapsed: " << timer.elapsed() << "ms";
+        timerLayering += timer.nsecsElapsed();
+        counterLayering += 1;
+        qDebug() << " Avg Time Elapsed: " << timerLayering/counterLayering << "ns" << "Counter: " << counterLayering;
     });
     connect(ui->layerValue, &QLineEdit::editingFinished, [this]() {
         currentImage.setLayer(ui->layerValue->text().toInt()-1);
@@ -67,6 +69,9 @@ void MainWindow::updateWindowing() {
     currentImage.setWindowingParameters(windowCenter, windowWidth);
     // 2. Update the image in the viewer
     ui->drawingArea->setImage(QPixmap::fromImage(currentImage.toQImage()));
-    qDebug() << "Time elapsed: " << timer.elapsed() << "ms";
+    timerWindowing += timer.nsecsElapsed();
+    counterWindowing += 1;
+    //qDebug() << "Time elapsed: " << timer.nsecsElapsed() << "ns";
+    qDebug() << " Avg Time Elapsed: " << timerWindowing/counterWindowing << "ns" << "Counter: " << counterWindowing;
 }
 
