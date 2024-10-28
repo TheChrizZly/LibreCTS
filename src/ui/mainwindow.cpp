@@ -46,7 +46,7 @@ MainWindow::~MainWindow() {
 void MainWindow::loadImage() {
     const QString fileName = QFileDialog::getOpenFileName(this, "Open Image", QCoreApplication::applicationDirPath(), "Image Files (*.raw)");
     CTImage ctImage;
-    if(int res = ctImage.readImage(fileName, 512, 512, 130); res != 0) {
+    if(int res = ctImage.readImage(fileName, 512, 512, 1); res != 0) {
         ErrorHandler errorHandler;
         errorHandler.handleError(static_cast<ErrorCode>(res));
         return;

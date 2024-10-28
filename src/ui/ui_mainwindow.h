@@ -66,6 +66,11 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
         MainWindow->resize(1200, 720);
+        QSizePolicy sizePolicy(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(MainWindow->sizePolicy().hasHeightForWidth());
+        MainWindow->setSizePolicy(sizePolicy);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         horizontalLayout = new QHBoxLayout(centralwidget);
@@ -120,11 +125,11 @@ public:
 
         layerValue = new QLineEdit(centralwidget);
         layerValue->setObjectName("layerValue");
-        QSizePolicy sizePolicy(QSizePolicy::Policy::MinimumExpanding, QSizePolicy::Policy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(layerValue->sizePolicy().hasHeightForWidth());
-        layerValue->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1(QSizePolicy::Policy::MinimumExpanding, QSizePolicy::Policy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(layerValue->sizePolicy().hasHeightForWidth());
+        layerValue->setSizePolicy(sizePolicy1);
         layerValue->setMaximumSize(QSize(40, 16777215));
         layerValue->setCursor(QCursor(Qt::CursorShape::IBeamCursor));
         layerValue->setContextMenuPolicy(Qt::ContextMenuPolicy::NoContextMenu);
@@ -143,6 +148,11 @@ public:
 
         layerSlider = new QSlider(centralwidget);
         layerSlider->setObjectName("layerSlider");
+        QSizePolicy sizePolicy2(QSizePolicy::Policy::Maximum, QSizePolicy::Policy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(layerSlider->sizePolicy().hasHeightForWidth());
+        layerSlider->setSizePolicy(sizePolicy2);
         layerSlider->setMinimum(1);
         layerSlider->setMaximum(1);
         layerSlider->setOrientation(Qt::Orientation::Vertical);
@@ -177,7 +187,7 @@ public:
 
         windowingCenterValue = new QLineEdit(centralwidget);
         windowingCenterValue->setObjectName("windowingCenterValue");
-        windowingCenterValue->setMaxLength(4);
+        windowingCenterValue->setMaxLength(5);
 
         horizontalLayout_5->addWidget(windowingCenterValue);
 
@@ -188,11 +198,11 @@ public:
 
         windowCenterSlider = new QSlider(centralwidget);
         windowCenterSlider->setObjectName("windowCenterSlider");
-        QSizePolicy sizePolicy1(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Fixed);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(windowCenterSlider->sizePolicy().hasHeightForWidth());
-        windowCenterSlider->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy3(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(windowCenterSlider->sizePolicy().hasHeightForWidth());
+        windowCenterSlider->setSizePolicy(sizePolicy3);
         windowCenterSlider->setMinimum(-1024);
         windowCenterSlider->setMaximum(3095);
         windowCenterSlider->setValue(0);

@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
+set(CMAKE_CXX_FLAGS_RELEASE "-O3 -march=native")
 # 1. Specify the include directory
 include_directories(${PROJECT_SOURCE_DIR}/lib/libtorch/include)
 

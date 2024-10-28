@@ -10,6 +10,12 @@
     <height>720</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -152,6 +158,12 @@
         </item>
         <item>
          <widget class="QSlider" name="layerSlider">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="minimum">
            <number>1</number>
           </property>
@@ -215,7 +227,7 @@
              <string>0</string>
             </property>
             <property name="maxLength">
-             <number>4</number>
+             <number>5</number>
             </property>
            </widget>
           </item>
