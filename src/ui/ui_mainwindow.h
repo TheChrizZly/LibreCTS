@@ -11,6 +11,8 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -49,6 +51,8 @@ public:
     QSpacerItem *layerSpaceDown;
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout_3;
+    QGroupBox *windowingGroupBox;
+    QVBoxLayout *verticalLayout_6;
     QHBoxLayout *horizontalLayout_5;
     QLabel *windowCenterLabel;
     QLineEdit *windowingCenterValue;
@@ -57,6 +61,16 @@ public:
     QLabel *windowWidthLabel;
     QLineEdit *windowingWidthValue;
     QSlider *windowWidthSlider;
+    QGroupBox *segmentationGroupBox;
+    QVBoxLayout *verticalLayout_7;
+    QCheckBox *segmentationCheckbox;
+    QHBoxLayout *horizontalLayout_8;
+    QLabel *segmentationHUThresholdLabel;
+    QLineEdit *segmentationThresholdValue;
+    QSlider *segmentationThresholdSlider;
+    QHBoxLayout *horizontalLayout_9;
+    QPushButton *calculateDepthMapButton;
+    QPushButton *pushButton;
     QSpacerItem *windowingSliderSpacer;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -178,14 +192,18 @@ public:
         verticalLayout_2->setObjectName("verticalLayout_2");
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName("verticalLayout_3");
+        windowingGroupBox = new QGroupBox(centralwidget);
+        windowingGroupBox->setObjectName("windowingGroupBox");
+        verticalLayout_6 = new QVBoxLayout(windowingGroupBox);
+        verticalLayout_6->setObjectName("verticalLayout_6");
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName("horizontalLayout_5");
-        windowCenterLabel = new QLabel(centralwidget);
+        windowCenterLabel = new QLabel(windowingGroupBox);
         windowCenterLabel->setObjectName("windowCenterLabel");
 
         horizontalLayout_5->addWidget(windowCenterLabel);
 
-        windowingCenterValue = new QLineEdit(centralwidget);
+        windowingCenterValue = new QLineEdit(windowingGroupBox);
         windowingCenterValue->setObjectName("windowingCenterValue");
         windowingCenterValue->setMaxLength(5);
 
@@ -194,9 +212,9 @@ public:
         horizontalLayout_5->setStretch(0, 1);
         horizontalLayout_5->setStretch(1, 1);
 
-        verticalLayout_3->addLayout(horizontalLayout_5);
+        verticalLayout_6->addLayout(horizontalLayout_5);
 
-        windowCenterSlider = new QSlider(centralwidget);
+        windowCenterSlider = new QSlider(windowingGroupBox);
         windowCenterSlider->setObjectName("windowCenterSlider");
         QSizePolicy sizePolicy3(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Fixed);
         sizePolicy3.setHorizontalStretch(0);
@@ -209,27 +227,26 @@ public:
         windowCenterSlider->setSliderPosition(0);
         windowCenterSlider->setOrientation(Qt::Orientation::Horizontal);
 
-        verticalLayout_3->addWidget(windowCenterSlider);
+        verticalLayout_6->addWidget(windowCenterSlider);
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName("horizontalLayout_6");
-        windowWidthLabel = new QLabel(centralwidget);
+        windowWidthLabel = new QLabel(windowingGroupBox);
         windowWidthLabel->setObjectName("windowWidthLabel");
 
         horizontalLayout_6->addWidget(windowWidthLabel);
 
-        windowingWidthValue = new QLineEdit(centralwidget);
+        windowingWidthValue = new QLineEdit(windowingGroupBox);
         windowingWidthValue->setObjectName("windowingWidthValue");
         windowingWidthValue->setMaxLength(4);
 
         horizontalLayout_6->addWidget(windowingWidthValue);
 
-        horizontalLayout_6->setStretch(0, 1);
         horizontalLayout_6->setStretch(1, 1);
 
-        verticalLayout_3->addLayout(horizontalLayout_6);
+        verticalLayout_6->addLayout(horizontalLayout_6);
 
-        windowWidthSlider = new QSlider(centralwidget);
+        windowWidthSlider = new QSlider(windowingGroupBox);
         windowWidthSlider->setObjectName("windowWidthSlider");
         windowWidthSlider->setMaximum(2059);
         windowWidthSlider->setValue(800);
@@ -237,7 +254,67 @@ public:
         windowWidthSlider->setOrientation(Qt::Orientation::Horizontal);
         windowWidthSlider->setTickPosition(QSlider::TickPosition::NoTicks);
 
-        verticalLayout_3->addWidget(windowWidthSlider);
+        verticalLayout_6->addWidget(windowWidthSlider);
+
+
+        verticalLayout_3->addWidget(windowingGroupBox);
+
+        segmentationGroupBox = new QGroupBox(centralwidget);
+        segmentationGroupBox->setObjectName("segmentationGroupBox");
+        verticalLayout_7 = new QVBoxLayout(segmentationGroupBox);
+        verticalLayout_7->setObjectName("verticalLayout_7");
+        segmentationCheckbox = new QCheckBox(segmentationGroupBox);
+        segmentationCheckbox->setObjectName("segmentationCheckbox");
+
+        verticalLayout_7->addWidget(segmentationCheckbox);
+
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setObjectName("horizontalLayout_8");
+        segmentationHUThresholdLabel = new QLabel(segmentationGroupBox);
+        segmentationHUThresholdLabel->setObjectName("segmentationHUThresholdLabel");
+
+        horizontalLayout_8->addWidget(segmentationHUThresholdLabel);
+
+        segmentationThresholdValue = new QLineEdit(segmentationGroupBox);
+        segmentationThresholdValue->setObjectName("segmentationThresholdValue");
+        segmentationThresholdValue->setMaxLength(5);
+
+        horizontalLayout_8->addWidget(segmentationThresholdValue);
+
+        horizontalLayout_8->setStretch(0, 1);
+        horizontalLayout_8->setStretch(1, 1);
+
+        verticalLayout_7->addLayout(horizontalLayout_8);
+
+        segmentationThresholdSlider = new QSlider(segmentationGroupBox);
+        segmentationThresholdSlider->setObjectName("segmentationThresholdSlider");
+        sizePolicy3.setHeightForWidth(segmentationThresholdSlider->sizePolicy().hasHeightForWidth());
+        segmentationThresholdSlider->setSizePolicy(sizePolicy3);
+        segmentationThresholdSlider->setMinimum(-1024);
+        segmentationThresholdSlider->setMaximum(3095);
+        segmentationThresholdSlider->setValue(0);
+        segmentationThresholdSlider->setSliderPosition(0);
+        segmentationThresholdSlider->setOrientation(Qt::Orientation::Horizontal);
+
+        verticalLayout_7->addWidget(segmentationThresholdSlider);
+
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setObjectName("horizontalLayout_9");
+        calculateDepthMapButton = new QPushButton(segmentationGroupBox);
+        calculateDepthMapButton->setObjectName("calculateDepthMapButton");
+
+        horizontalLayout_9->addWidget(calculateDepthMapButton);
+
+        pushButton = new QPushButton(segmentationGroupBox);
+        pushButton->setObjectName("pushButton");
+
+        horizontalLayout_9->addWidget(pushButton);
+
+
+        verticalLayout_7->addLayout(horizontalLayout_9);
+
+
+        verticalLayout_3->addWidget(segmentationGroupBox);
 
         windowingSliderSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
 
@@ -272,10 +349,17 @@ public:
         loadImageButton->setText(QCoreApplication::translate("MainWindow", "load Image", nullptr));
         layerLabel->setText(QCoreApplication::translate("MainWindow", "Layer", nullptr));
         layerValue->setText(QCoreApplication::translate("MainWindow", "1", nullptr));
+        windowingGroupBox->setTitle(QCoreApplication::translate("MainWindow", "Windowing", nullptr));
         windowCenterLabel->setText(QCoreApplication::translate("MainWindow", "Windowing Center", nullptr));
         windowingCenterValue->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         windowWidthLabel->setText(QCoreApplication::translate("MainWindow", "Windowing Width", nullptr));
         windowingWidthValue->setText(QCoreApplication::translate("MainWindow", "800", nullptr));
+        segmentationGroupBox->setTitle(QCoreApplication::translate("MainWindow", "Segmentation", nullptr));
+        segmentationCheckbox->setText(QCoreApplication::translate("MainWindow", "Segmentation", nullptr));
+        segmentationHUThresholdLabel->setText(QCoreApplication::translate("MainWindow", "HU-Threshold", nullptr));
+        segmentationThresholdValue->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
+        calculateDepthMapButton->setText(QCoreApplication::translate("MainWindow", "Calculate Depth Map", nullptr));
+        pushButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
     } // retranslateUi
 
 };

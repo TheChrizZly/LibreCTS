@@ -38,5 +38,6 @@ private:
 private slots:
     void loadImage();
     void updateWindowing();
+    void calculateDepthBuffer();
 };
 #endif // MAINWINDOW_H

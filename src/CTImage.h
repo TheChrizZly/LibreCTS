@@ -9,6 +9,8 @@
 #include <QFile>
 #include <QMessageBox>
 #include <QImage>
+#include <omp.h>
+
 
 class CTImage {
 public:
@@ -25,7 +27,7 @@ public:
      * Current Layer is initialized with 1, so it diesn't need to be updated when Image is loaded
      * Imagedata is initialized with a nullptr
      */
-    CTImage() : height_(0), width_(0), depth_(0), size_(0), currentWindowingCenter_(0), currentWindowingWidth_(800), currentLayer_(0), data_(nullptr) {}
+    CTImage() : height_(0), width_(0), depth_(0), size_(0), currentWindowingCenter_(0), currentWindowingWidth_(800), currentLayer_(0), segmentationActive_(0), segmentationThreshold_(0), data_(nullptr), depthMap_(nullptr) {}
     ~CTImage();
 
     /**
@@ -41,6 +43,13 @@ public:
      */
     void setLayer(const int layer){currentLayer_ = layer;}
 
+    void setSegmentationThreshold(const int threshold) {
+     segmentationThreshold_ = threshold;
+    }
+
+    void setSegmentationActive(const int active) {
+     segmentationActive_ = active;
+    }
     /**
      *
      * @return Returns the Height, Width and Depth of the CT Image
@@ -64,6 +73,8 @@ public:
      */
     int readImage(const QString &filepath, size_t height=0, size_t width=0, size_t depth=0);
 
+    int calculateDepthBuffer();
+
     /**
      * Function to create a 2D QImage from the 3D CT Data.
      * Size parameters and currentLayer are used from the class variables and might need to be set before calling toQImage
@@ -84,17 +95,21 @@ private:
     int currentWindowingCenter_;
     int currentWindowingWidth_;
     int currentLayer_;
+    int segmentationThreshold_;
+    int segmentationActive_;
 
     short *data_;
+    short *depthMap_;
 
     /**
      * Internal function to apply the windowing on the Image
      * @param hu the HU value of the original image
      * @param windowCenter the Window Center of the Windowing
      * @param windowWidth the Window Width for the Windowing
+     * @param greyValue reference to the Grayscale Value to visualize the data (0-255)
      * @return the Grayscale Value to visualize the data (0-255)
      */
-    static int applyWindow(int hu, int windowCenter, int windowWidth);
+    static int applyWindow(int hu, int windowCenter, int windowWidth, int& greyValue);
 
     /**
      * Internal function to apply the windowing on the Image

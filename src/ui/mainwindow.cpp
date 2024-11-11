@@ -5,6 +5,8 @@
 #include "mainwindow.h"
 #include "mainwindow.h"
 
+#include <qguiapplication.h>
+
 #include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -38,6 +40,22 @@ MainWindow::MainWindow(QWidget *parent)
         ui->drawingArea->setImage(QPixmap::fromImage(currentImage.toQImage()));
         ui->layerSlider->setValue(ui->layerValue->text().toInt());
     });
+    connect(ui->segmentationCheckbox, &QCheckBox::checkStateChanged, [this](const int state) {
+    currentImage.setSegmentationActive(state == Qt::Checked);
+    ui->drawingArea->setImage(QPixmap::fromImage(currentImage.toQImage()));
+    });
+    connect(ui->segmentationThresholdSlider, &QSlider::valueChanged, [this](const int value) {
+        ui->segmentationThresholdValue->setText(QString::number(value));
+        currentImage.setSegmentationThreshold(value);
+        ui->drawingArea->setImage(QPixmap::fromImage(currentImage.toQImage()));
+    });
+    connect(ui->segmentationThresholdValue, &QLineEdit::editingFinished, [this]() {
+        ui->segmentationThresholdSlider->setValue(ui->segmentationThresholdValue->text().toInt());
+        currentImage.setSegmentationThreshold(ui->segmentationThresholdValue->text().toInt());
+        ui->drawingArea->setImage(QPixmap::fromImage(currentImage.toQImage()));
+    });
+
+    connect(ui->calculateDepthMapButton, &QPushButton::clicked, this, &MainWindow::calculateDepthBuffer);
 }
 
 MainWindow::~MainWindow() {
@@ -46,7 +64,7 @@ MainWindow::~MainWindow() {
 void MainWindow::loadImage() {
     const QString fileName = QFileDialog::getOpenFileName(this, "Open Image", QCoreApplication::applicationDirPath(), "Image Files (*.raw)");
     CTImage ctImage;
-    if(int res = ctImage.readImage(fileName, 512, 512, 1); res != 0) {
+    if(int res = ctImage.readImage(fileName, 512, 512, 130); res != 0) {
         ErrorHandler errorHandler;
         errorHandler.handleError(static_cast<ErrorCode>(res));
         return;
@@ -74,4 +92,9 @@ void MainWindow::updateWindowing() {
     //qDebug() << "Time elapsed: " << timer.nsecsElapsed() << "ns";
     qDebug() << " Avg Time Elapsed: " << timerWindowing/counterWindowing << "ns" << "Counter: " << counterWindowing;
 }
+
+void MainWindow::calculateDepthBuffer() {
+    
+}
+
 

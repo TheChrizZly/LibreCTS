@@ -12,6 +12,10 @@
 #include <QPixmap>
 #include "../CTImage.h"
 
+/**
+ * CTImageViewer is a QLabel that is used to display a CTImage.
+ * The reason for a custom class is that the QLabel is not able to resize the image while keeping a defined Aspect Ratio.
+ */
 class CTImageViewer final : public QLabel {
     Q_OBJECT
 
@@ -19,7 +23,7 @@ public:
     explicit CTImageViewer(QWidget *parent = nullptr): originalPixmap(new QPixmap) {}
     void setImage(const QPixmap &pixmap) {
         //Slightly faster than swapping the content
-        originalPixmap = std::make_unique<QPixmap>(pixmap);
+        originalPixmap = std::make_unique<QPixmap>(pixmap); //Creates new Pixmap object as copy of (pixmap)
         setPixmap(pixmap);
 
        // QPixmap newPixmap(pixmap); // Create a temporary pixmap
